@@ -1,9 +1,7 @@
-package org.rvchavda.arrays_string;
+package org.rvchavda.ctci.arrays_string;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * Check if giver String is permutation of a palindrome.

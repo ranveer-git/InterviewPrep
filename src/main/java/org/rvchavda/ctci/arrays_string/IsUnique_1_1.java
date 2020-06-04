@@ -1,4 +1,4 @@
-package org.rvchavda.arrays_string;
+package org.rvchavda.ctci.arrays_string;
 
 public class IsUnique_1_1 {
     public static boolean isUniqueWithArray(String inputString) {

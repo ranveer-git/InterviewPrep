@@ -1,8 +1,8 @@
-package org.rvchavda.arrays_string;
+package org.rvchavda.ctci.arrays_string;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.rvchavda.RotateIntArray;
+import org.rvchavda.others.RotateIntArray;
 
 public class RotateIntArrayTest {
 

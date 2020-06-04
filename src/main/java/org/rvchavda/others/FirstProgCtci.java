@@ -1,4 +1,4 @@
-package org.rvchavda;
+package org.rvchavda.others;
 
 public class FirstProgCtci {
     public static void main(String[] args) {
