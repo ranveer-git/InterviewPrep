@@ -1,12 +1,12 @@
 package org.rvchavda.leetcode.arrays;
 
-public class TwoSum {
+public class TwoSum_1 {
     public void method() {
 
     }
 
     public static void main(String[] args) {
-        TwoSum cls = new TwoSum();
+        TwoSum_1 cls = new TwoSum_1();
         //cls.method();
     }
 }

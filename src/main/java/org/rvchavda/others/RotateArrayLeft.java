@@ -1,20 +1,22 @@
 package org.rvchavda.others;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * https://www.geeksforgeeks.org/array-rotation/
  */
-public class RotateIntArray {
+public class RotateArrayLeft {
     public static void main(String[] args) {
-        int[] a = new int[] {1,2,3,4,5,6,7,8};
+        int[] a = new int[]{1, 2, 3, 4, 5, 6, 7, 8};
         printArray(rotateArr(a, 2));
     }
+
     public static int[] rotateArr(int[] arr, int d) {
         int currValue = arr[0];
         int currIndex = 0;
-        int nextIndex,nextVal = -1;
+        int nextIndex, nextVal = -1;
         int swaps = 0;
         List<Integer> indexCovered = new ArrayList<>();
         while(swaps < arr.length) {
@@ -41,12 +43,12 @@ public class RotateIntArray {
 
     static void printArray(int arr[])
     {
-        for (int i = 0; i < arr.length; i++)
-            System.out.print(arr[i] + " ");
+        System.out.print(Arrays.toString(arr));
     }
     private static int getNextIndex(int d, int length, int currentIndex) {
-        if (currentIndex < d) {
-            return length - (d- currentIndex);
+//        return (currentIndex + d) % length; // RotateRight
+        if (currentIndex < d) { // RotateLeft
+            return length - (d - currentIndex);
         } else {
             return currentIndex - d;
         }
