@@ -15,13 +15,13 @@ public class BestTimeBuySellStock_121 {
     public int maxProfit(int[] prices) {
         int minPrice = Integer.MAX_VALUE;
         int maxProfit = 0;
-        for (int i = 0; i < prices.length; i++) {
-            if (prices[i] < minPrice) {
-                minPrice = prices[i];
+        for (int price : prices) {
+            if (price < minPrice) {
+                minPrice = price;
             }
             //profit = prices[i] - minPrice;
-            if (prices[i] - minPrice > maxProfit) {
-                maxProfit = prices[i] - minPrice;
+            if (price - minPrice > maxProfit) {
+                maxProfit = price - minPrice;
             }
 //            System.out.println("MinPrice:"+minPrice+",curPrice:"+prices[i]+",Profit:"+maxProfit);
         }
@@ -31,6 +31,6 @@ public class BestTimeBuySellStock_121 {
 
     public static void main(String[] args) {
         BestTimeBuySellStock_121 cls = new BestTimeBuySellStock_121();
-        cls.maxProfit(new int[]{3, 1, 2, 5, 2, 7, 5, 3, 4});
+        System.out.println(cls.maxProfit(new int[]{3, 1, 2, 5, 2, 7, 5, 3, 4}));
     }
 }

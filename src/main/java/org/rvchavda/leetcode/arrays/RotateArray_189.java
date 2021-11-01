@@ -30,31 +30,34 @@ import java.util.Arrays;
  * k >= 0
  */
 public class RotateArray_189 {
-    public void rotate(int[] arr, int d) {
-        if (arr.length == 1) {
+    public void rotate(int[] nums, int k) {
+        if (nums.length == 1) {
             return;
         }
-        if (d > arr.length) {
-            d = d % arr.length;
+        k = k % nums.length;
+        int[] temp = new int[k];
+        for (int i = nums.length - k, j = 0; i < nums.length; i++, j++) {
+            temp[j] = nums[i];
         }
-        int[] temp = new int[d];
-        for (int i = arr.length - d, j = 0; i < arr.length; i++, j++) {
-            temp[j] = arr[i];
-        }
-        System.arraycopy(arr, 0, arr, d, arr.length - d);
-        System.arraycopy(temp, 0, arr, 0, temp.length);
+        System.arraycopy(nums, 0, nums, k, nums.length - k);
+        System.arraycopy(temp, 0, nums, 0, temp.length);
         //System.out.println("return");
     }
 
-    public void rotateCyclic(int[] arr, int d) {
-        if (arr.length == 1) {
-            return;
+    public void rotate2(int[] nums, int k) {
+        k %= nums.length;
+        reverse(nums, 0, nums.length - 1);
+        reverse(nums, 0, k - 1);
+        reverse(nums, k, nums.length - 1);
+    }
+    public void reverse(int[] nums, int start, int end) {
+        while (start < end) {
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
         }
-        if (d > arr.length) {
-            d = d % arr.length;
-        }
-
-
     }
 
     public static void main(String[] args) {

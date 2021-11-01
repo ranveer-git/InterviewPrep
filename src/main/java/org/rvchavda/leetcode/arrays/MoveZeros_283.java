@@ -13,26 +13,15 @@ public class MoveZeros_283 {
      * Minimize the total number of operations.
      */
     public void moveZeroes(int[] nums) {
-        //Count all zeros
-        int count = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == 0) {
-                count++;
+        int insertPos=0;
+        for (int i =0;i<nums.length;i++) {
+            if(nums[i]!=0) {
+                nums[insertPos++]=nums[i];
             }
         }
-        //start from righ to left and put all nonzero in a sequence
-        int putIndex = 0;
-        for (int j = 0; j < nums.length; j++) {
-            if (nums[j] != 0) {
-                nums[putIndex++] = nums[j];
-            }
+        for(int i = insertPos;i<nums.length;i++) {
+            nums[i]=0;
         }
-
-        for (int k = putIndex; k < nums.length; k++) {
-            nums[k] = 0;
-        }
-        //then put the rest as zero
-        System.out.println("Success");
     }
 
     public static void main(String[] args) {
