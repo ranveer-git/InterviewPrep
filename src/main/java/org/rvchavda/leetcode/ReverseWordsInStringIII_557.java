@@ -41,17 +41,12 @@ public class ReverseWordsInStringIII_557 {
 
     public String reverseWords(String s) {
         String[] words = s.split(" ");
-        int counter = 0;
         StringBuilder sb = new StringBuilder(s.length());
         for(String word: words) {
             char[] wordCharArr = word.toCharArray();
             reverseString(wordCharArr);
             sb.append(new String(wordCharArr)).append(" ");
-            //words[counter++] = new String(wordCharArr);
         }
-//        for(String revWord : words) {
-//            System.out.print(revWord + " ");
-//        }
         return sb.toString().trim();
     }
 
