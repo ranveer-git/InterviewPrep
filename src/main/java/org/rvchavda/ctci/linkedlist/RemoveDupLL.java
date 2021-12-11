@@ -1,6 +1,6 @@
 package org.rvchavda.ctci.linkedlist;
 
-import org.rvchavda.others.datastructure.SinglyLinkedList;
+import org.rvchavda.datastructure_and_alogs.linear.SinglyLinkedList;
 
 import java.util.HashSet;
 import java.util.Set;

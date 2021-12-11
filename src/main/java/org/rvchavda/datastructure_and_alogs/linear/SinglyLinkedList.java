@@ -1,4 +1,4 @@
-package org.rvchavda.others.datastructure;
+package org.rvchavda.datastructure_and_alogs.linear;
 
 public class SinglyLinkedList {
     private Node head;
