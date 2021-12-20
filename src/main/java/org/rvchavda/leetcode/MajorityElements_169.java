@@ -1,4 +1,4 @@
-package org.rvchavda.leetcode.arrays;
+package org.rvchavda.leetcode;
 
 import java.util.Arrays;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package org.rvchavda.leetcode.arrays;
+package org.rvchavda.leetcode;
 
 /**
  * Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.

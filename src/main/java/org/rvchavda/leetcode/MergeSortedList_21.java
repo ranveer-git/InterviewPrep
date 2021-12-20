@@ -1,4 +1,4 @@
-package org.rvchavda.leetcode.arrays;
+package org.rvchavda.leetcode;
 
 /**
  * Merge two sorted linked lists and return it as a new sorted list. The new list should be made by splicing
@@ -77,11 +77,11 @@ public class MergeSortedList_21 {
             System.out.println(a.val);
             a = a.next;
         }*/
-        ListNode a = cls.mergeTwoListsRecursion(cls.buildList(new int[]{1, 2, 4}).next, cls.buildList(new int[]{1, 3, 4}).next);
+        ListNode a = cls.mergeTwoListsRecursion(buildList(new int[]{1, 2, 4}).next, buildList(new int[]{1, 3, 4}).next);
         System.out.println(a);
     }
 
-    public ListNode buildList(int[] nums) {
+    public static ListNode buildList(int[] nums) {
         ListNode head = new ListNode();
         ListNode n = head;
         for (int i = 0; i < nums.length; i++) {
@@ -107,6 +107,14 @@ class ListNode {
     ListNode(int val, ListNode next) {
         this.val = val;
         this.next = next;
+    }
+
+    @Override
+    public String toString() {
+        return "ListNode{" +
+                "val=" + val +
+                ", next=" + next +
+                '}';
     }
 }
 

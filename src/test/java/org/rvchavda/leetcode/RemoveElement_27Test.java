@@ -1,4 +1,4 @@
-package org.rvchavda.leetcode.arrays;
+package org.rvchavda.leetcode;
 
 public class RemoveElement_27Test {
 

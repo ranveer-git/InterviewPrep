@@ -1,4 +1,4 @@
-package org.rvchavda.leetcode.arrays;
+package org.rvchavda.leetcode;
 
 import java.util.*;
 
@@ -26,26 +26,20 @@ import java.util.*;
 public class HighFive_1086 {
     public int[][] highFive(int[][] items) {
         int id, marks;
-        Map<Integer, List<Integer>> idMarks = new HashMap<>();
-        Comparator<Integer> descending = (o1, o2) -> {
-            if (o1 > o2) {
-                return -1;
-            } else if (o1 < o2) {
-                return 1;
-            } else {
-                return 0;
-            }
-        };
+        Map<Integer, PriorityQueue<Integer>> idMarks = new HashMap<>();
         for (int i = 0; i < items.length; i++) {
             id = items[i][0];
             marks = items[i][1];
-            idMarks.putIfAbsent(id, new ArrayList<>());
-            idMarks.get(id).add(marks);
+            idMarks.putIfAbsent(id, new PriorityQueue<>(5));
+            idMarks.get(id).offer(marks);
+            if(idMarks.get(id).size() > 5) {
+                idMarks.get(id).poll();
+            }
         }
         int[][] highFiveAvg = new int[idMarks.size()][2];
         final int[] count = {0};
         idMarks.forEach((idee, marksSet) -> {
-            int totalMarksHighFive = marksSet.stream().sorted(descending).limit(5).mapToInt(Integer::intValue).sum() / 5;
+            int totalMarksHighFive = marksSet.stream().mapToInt(Integer::intValue).sum() / 5;
             highFiveAvg[count[0]][0] = idee;
             highFiveAvg[count[0]][1] = totalMarksHighFive;
             count[0]++;

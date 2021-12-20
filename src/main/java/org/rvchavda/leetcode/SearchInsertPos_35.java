@@ -1,4 +1,4 @@
-package org.rvchavda.leetcode.arrays;
+package org.rvchavda.leetcode;
 
 /**
  * Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
@@ -18,15 +18,13 @@ package org.rvchavda.leetcode.arrays;
  */
 public class SearchInsertPos_35 {
     public int searchInsert(int[] nums, int target) {
-        int right = nums.length - 1, left = 0, mid = 0;
+        int left = 0;int right = nums.length -1;
         while (left <= right) {
-            if (nums[mid] == target) {
+            int mid = left + (right - left)/2;
+            if(nums[mid] == target) {
                 return mid;
-            }
-            mid = left + (right - left) / 2;
-
-            if (target <= nums[mid]) {
-                right = mid - 1;
+            } else if(target < nums[mid]) {
+                right = mid -1;
             } else {
                 left = mid + 1;
             }
@@ -36,6 +34,7 @@ public class SearchInsertPos_35 {
 
     public static void main(String[] args) {
         SearchInsertPos_35 cls = new SearchInsertPos_35();
+        System.out.println("1:" + cls.searchInsert(new int[]{1, 3, 5, 6}, 2));
         System.out.println("2:" + cls.searchInsert(new int[]{1, 2, 5, 6}, 3));
         System.out.println("0:" + cls.searchInsert(new int[]{1, 2, 5, 6}, 1));
         System.out.println("3:" + cls.searchInsert(new int[]{1, 2, 5, 6}, 6));
