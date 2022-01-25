@@ -1,8 +1,14 @@
 package org.rvchavda.dynamicprog;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+/**
+ *
+ * #DynamicProgramming #DP
+ */
 public class StringConstruct {
     public static void main(String[] args) {
         try{
@@ -32,6 +38,13 @@ public class StringConstruct {
         }
         return totalCount;
 
+    }
+    public static List<List<String>> allConstructMemo(String target, String[] wordDictionary, Map<String, List<String>> memo) {
+        if("".equals(target)) return Arrays.asList(Arrays.asList(""));
+        for (String word : wordDictionary) {
+
+        }
+        return null;
     }
     public static int countConstructMemo(String target, String[] wordDictionary, Map<String, Integer> memo) {
         if(memo.containsKey(target)) {

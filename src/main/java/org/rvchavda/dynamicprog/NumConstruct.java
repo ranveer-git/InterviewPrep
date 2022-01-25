@@ -1,8 +1,12 @@
 package org.rvchavda.dynamicprog;
-
 import java.sql.Array;
 import java.util.*;
-
+/**
+ * canSum => Possible to reach target using NUmnbers in the num array
+ * howSum => How to build sum to reach target using Numbers in the num array, Return a first array with the set of numbers to reach sum
+ * bestSum => Reach to the best Possible sum with minimum numbers possible to reach to target, Return best int[] to build target sum
+ * #DynamicProgramming #DP
+ */
 public class NumConstruct {
   public static void main(String[] args) {
     try{
