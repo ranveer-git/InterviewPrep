@@ -1,9 +1,9 @@
 package org.rvchavda.dynamicprog;
 
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -13,6 +13,8 @@ public class StringConstruct {
     public static void main(String[] args) {
         try{
             System.out.println(canConstruct("purple", new String[]{"p","ur","ple","pur","le"}));
+            System.out.println(allConstruct("purple", new String[]{"p","ur","ple","pur","le"}));
+
             System.out.println("Expected:false => Actual:=>"+canConstructMemo("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeef"
                     , new String[]{"e","ee","eee","eeeeee","eeeeeeee"}, new HashMap<>()));
             System.out.println(countConstruct("purple", new String[]{"p","ur","ple","pur","le"}));//"p","ur","ple"||"pur","ple"||"pur","p","le"||"p","ur","p","le" => 4
@@ -101,5 +103,31 @@ public class StringConstruct {
         }
         memo.put(target, false);
         return false;
+    }
+
+    public static List<List<String>> allConstruct(String target, String[] wordDictionary) {
+        List<List<String>> allComb = new ArrayList<>();
+        if("".equals(target)) {
+            return new ArrayList<>(new ArrayList<>());
+        }
+
+        for (String word : wordDictionary) {
+            if(target.startsWith(word)) {
+                String rem = target.replaceFirst(word, "");
+                List<List<String>> suffixWays = allConstruct(rem, wordDictionary);
+                List<List<String>> targetWays = new ArrayList<>();
+//                if(suffixWays.isEmpty()) {
+//                    targetWays = new ArrayList<>();
+//                    targetWays.add(0, new ArrayList<>());
+//                    targetWays.get(0).add(word);
+//                } else {
+                    for (List<String> listWord : suffixWays) {
+                        listWord.add(0,word);
+                        targetWays.add(listWord);
+                    }
+//                }
+            }
+        }
+        return allComb;
     }
 }
