@@ -52,4 +52,51 @@ public class TopKFreqElements_347 {
     TopKFreqElements_347 cls = new TopKFreqElements_347();
     cls.topKFrequent(new int[]{1,1,1,2,2,3}, 2);
   }
+
+
+
+
+  public static int findKthLargestElement(int[] nums, int k){
+    PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+    for (int i = 0; i < nums.length; i++) {
+      pq.add(nums[i]);
+    }
+    for (int i = 0; i < k-1; i++) {
+      pq.poll();
+    }
+    return pq.peek();
+  }
+
+  public static int findKthMostFrequentElement(int[] nums, int k) {
+//    PriorityQueue<Map.Entry<Integer, Integer>> pq = new PriorityQueue<>(Collections.reverseOrder(Map.Entry.comparingByValue()));
+//    PriorityQueue<Map.Entry<Integer, Integer>> pq = new PriorityQueue<>(Map.Entry.comparingByValue(Collections.reverseOrder()));
+    PriorityQueue<Map.Entry<Integer, Integer>> pq = new PriorityQueue<>((a,b) -> b.getValue() - a.getValue());
+    Map<Integer, Integer> freqMap = new HashMap<>();
+    IntStream.of(nums).forEach(num -> freqMap.put(num,freqMap.getOrDefault(num, 0)+1));
+
+    freqMap.entrySet().forEach(entry -> pq.offer(entry));
+    /*for (Map.Entry<Integer, Integer> entry : freqMap.entrySet()) {
+      pq.offer(entry);
+    }*/
+    int element = -1;
+    for (int i = 0; i < k; i++) {
+      element = pq.poll().getKey();
+//      System.out.println(element);
+    }
+    return element;
+  }
+
+  public List<String> topKFrequent(String[] words, int k) {
+    PriorityQueue<Map.Entry<String, Integer>> pq = new PriorityQueue<>(Collections.reverseOrder(Map.Entry.comparingByValue()));
+    Map<String, Integer> freqMap = new HashMap<>();
+    Arrays.stream(words).forEach(word -> freqMap.put(word, freqMap.getOrDefault(word, 0) + 1));
+
+    freqMap.entrySet().forEach(entry -> pq.offer(entry));
+
+    List<String> wordsList = new ArrayList<>();
+    for (int i = 0; i < k; i++) {
+      wordsList.add(pq.poll().getKey());
+    }
+    return wordsList;
+  }
 }

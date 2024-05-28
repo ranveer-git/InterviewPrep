@@ -38,11 +38,63 @@ public class GroupAnagrams_49 {
         Map<String,List<String>> valueStore = new HashMap<>();
         for(String str : strs) {
             char[] strArr = str.toCharArray();
-            Arrays.sort(strArr);
-            String sortedKey = String.valueOf(strArr);
+//            Arrays.sort(strArr);
+            String sortedKey = sortLowerCaseCharArr(strArr);;
+//            String sortedKey = getSortedString(str);;
+//            String sortedKey = getSortedStringHeap(str);;
             valueStore.putIfAbsent(sortedKey, new ArrayList());
             valueStore.get(sortedKey).add(str);
         }
-        return new ArrayList<List<String>>(valueStore.values());
+        return new ArrayList<>(valueStore.values());
+    }
+
+    public String sortLowerCaseString(String val) {
+        return sortLowerCaseCharArr(val.toCharArray());
+    }
+
+    public String sortLowerCaseCharArr(char[] charArr) {
+        int[] charFreqCount = new int[26];
+        for (char c : charArr) {
+            charFreqCount[c - 'a']++;
+        }
+
+//        StringBuffer sb = new StringBuffer();
+        char[] sortedCharArr = new char[charArr.length];
+        int index = 0;
+        for (int i = 0; i < charFreqCount.length; i++) {
+            if(charFreqCount[i] > 0) {
+                Arrays.fill(sortedCharArr,index,index+charFreqCount[i],(char)('a'+i));
+                index += charFreqCount[i];
+//                sb.append(String.valueOf((char)('a'+i)).repeat(charFreqCount[i]));
+            }
+        }
+//        return sb.toString();
+        return new String(sortedCharArr);
+    }
+
+    public static String getSortedStringHeap(String str)
+    {
+        // Create two priority queues to store lowercase and
+        // uppercase characters separately
+        PriorityQueue<Character> lower
+            = new PriorityQueue<>();
+        int n = str.length();
+
+        // Loop through the string and insert each character
+        // into the appropriate queue
+        for (int i = 0; i < n; i++) {
+                lower.add(str.charAt(i));
+        }
+
+        // Loop through the string again and replace each
+        // character with the next lowest or highest
+        // character in the appropriate queue
+        char[] sortedStr = new char[n];
+        for (int i = 0; i < n; i++) {
+                sortedStr[i] = lower.poll();
+        }
+
+        // Return the sorted string
+        return new String(sortedStr);
     }
 }

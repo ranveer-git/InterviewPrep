@@ -1,6 +1,7 @@
 package org.rvchavda.blinds75;
 
 /**
+ * #blind75 #container˜Å
  * Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of the line i is at (i, ai) and (i, 0). Find two lines, which, together with the x-axis forms a container, such that the container contains the most water.
  *
  * Notice that you may not slant the container.
@@ -34,12 +35,26 @@ package org.rvchavda.blinds75;
  * 0 <= height[i] <= 104
  */
 public class ContainWithMostWater_11 {
-    public void method() {
-
+    public int maxArea(int[] height) {
+        int leftIndex = 0;
+        int rightIndex = height.length-1;
+        int maxArea = Integer.MIN_VALUE;
+        while(leftIndex<rightIndex) {
+            maxArea = Math.max(maxArea, (rightIndex - leftIndex)*Math.min(height[leftIndex], height[rightIndex]));
+            if(height[leftIndex]<height[rightIndex]) {
+                leftIndex++;
+            } else {
+                rightIndex--;
+            }
+        }
+        return maxArea;
     }
 
     public static void main(String[] args) {
         ContainWithMostWater_11 cls = new ContainWithMostWater_11();
-        //cls.method();
+        System.out.println(cls.maxArea(new int[]{1, 7, 5, 2, 4, 8, 2}));
+        System.out.println(cls.maxArea(new int[]{1,8,6,2,5,4,8,3,7}));
+        System.out.println(cls.maxArea(new int[]{}));
+        System.out.println(cls.maxArea(new int[]{0,0}));
     }
 }
