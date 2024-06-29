@@ -1,8 +1,7 @@
 package org.rvchavda.leetcode;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.PriorityQueue;
+import java.util.*;
+import java.util.stream.IntStream;
 
 /**
  * 347. Top K Frequent Elements
@@ -29,15 +28,14 @@ import java.util.PriorityQueue;
  */
 public class TopKFreqElements_347 {
   public int[] topKFrequent(int[] nums, int k) {
-      PriorityQueue<Map.Entry<Integer, Integer>> pq = new PriorityQueue<>((a,b) -> b.getValue() - a.getValue());
       Map<Integer, Integer> numberFreq = new HashMap<>();
-      int[] topKFreqArray = new int[k];
-      for (int i = 0; i < nums.length; i++) {
-        if(numberFreq.containsKey(nums[i])) {
-          numberFreq.put(nums[i], numberFreq.get(nums[i]) + 1);
-        }
-        numberFreq.putIfAbsent(nums[i], 1);
-      }
+    int[] topKFreqArray = new int[k];
+    for (int num : nums) {
+      numberFreq.put(num, numberFreq.getOrDefault(num, 1)+1);
+    }
+
+
+    PriorityQueue<Map.Entry<Integer, Integer>> pq = new PriorityQueue<>((a,b) -> b.getValue() - a.getValue());
     for (Map.Entry<Integer, Integer> integerIntegerEntry : numberFreq.entrySet()) {
       pq.offer(integerIntegerEntry);
     }
@@ -74,7 +72,7 @@ public class TopKFreqElements_347 {
     Map<Integer, Integer> freqMap = new HashMap<>();
     IntStream.of(nums).forEach(num -> freqMap.put(num,freqMap.getOrDefault(num, 0)+1));
 
-    freqMap.entrySet().forEach(entry -> pq.offer(entry));
+    freqMap.entrySet().forEach(pq::offer);
     /*for (Map.Entry<Integer, Integer> entry : freqMap.entrySet()) {
       pq.offer(entry);
     }*/

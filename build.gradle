@@ -5,14 +5,14 @@ plugins {
 group 'org.rvchavda'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.11
+sourceCompatibility = 1.17
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    compile group: 'org.apache.commons', name: 'commons-csv', version: '1.1'
-    compile group: 'com.opencsv', name: 'opencsv', version: '5.0'
+    implementation 'org.apache.commons:commons-csv:1.1'
+    implementation 'com.opencsv:opencsv:5.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.0'
 }
