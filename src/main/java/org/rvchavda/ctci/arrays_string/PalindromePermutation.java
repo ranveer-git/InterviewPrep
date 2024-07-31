@@ -29,6 +29,7 @@ public class PalindromePermutation {
 
     public static void main(String[] args) {
         PalindromePermutation cls = new PalindromePermutation();
+        System.out.println(cls.isPermutationOfPalindrome("Tact Coa "));
         System.out.println(cls.isPermutationOfPalindrome("test "));
         System.out.println(cls.isPermutationOfPalindrome("s test "));
         System.out.println(cls.isPermutationOfPalindrome("   aabbcb  "));

@@ -13,19 +13,17 @@ package org.rvchavda.leetcode;
  */
 public class BestTimeBuySellStock_121 {
     public int maxProfit(int[] prices) {
-        int minPrice = Integer.MAX_VALUE;
+        int minPriceSoFar = Integer.MAX_VALUE;
         int maxProfit = 0;
-        for (int price : prices) {
-            if (price < minPrice) {
-                minPrice = price;
-            }
-            //profit = prices[i] - minPrice;
-            if (price - minPrice > maxProfit) {
-                maxProfit = price - minPrice;
-            }
-//            System.out.println("MinPrice:"+minPrice+",curPrice:"+prices[i]+",Profit:"+maxProfit);
+        for (int todaysPrice : prices) {
+
+            minPriceSoFar = Math.min(todaysPrice, minPriceSoFar);
+
+            int profitIfSoldToday = todaysPrice - minPriceSoFar;
+            maxProfit = Math.max(maxProfit, profitIfSoldToday);
+//            System.out.println("MinPrice:"+minPriceSoFar+",curPrice:"+prices[i]+",Profit:"+maxProfit);
         }
-//        System.out.println(minPrice);
+//        System.out.println(minPriceSoFar);
         return maxProfit;
     }
 

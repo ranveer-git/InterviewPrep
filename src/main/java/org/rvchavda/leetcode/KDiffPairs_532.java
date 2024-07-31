@@ -34,13 +34,13 @@ public class KDiffPairs_532 {
         if (k < 0) {
             return 0;
         }
-        Map<Integer, Integer> a = Arrays.stream(nums).boxed().collect(Collectors.groupingBy(Function.identity(),
+        Map<Integer, Integer> freqMap = Arrays.stream(nums).boxed().collect(Collectors.groupingBy(Function.identity(),
                 Collectors.summingInt(j -> 1)));
 
-        a.forEach((key, value) -> {
-            if (k == 0 && value > 1) {
+        freqMap.forEach((number, freq) -> {
+            if (k == 0 && freq > 1) {
                 pairs[0]++;
-            } else if (k != 0 && a.containsKey(key - k)) {
+            } else if (k != 0 && freqMap.containsKey(number - k)) {
                 pairs[0]++;
             }
         });

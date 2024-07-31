@@ -2,6 +2,8 @@ package org.rvchavda.leetcode.arrays;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * https://leetcode.com/problems/longest-consecutive-sequence/

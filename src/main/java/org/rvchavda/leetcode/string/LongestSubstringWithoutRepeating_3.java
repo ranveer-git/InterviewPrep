@@ -49,14 +49,13 @@ public class LongestSubstringWithoutRepeating_3 {
         return longestLength;
     }
 
-    private void removeTillRepeatingChar(Set<Character> occurance,char charToFind) {
-        Iterator<Character> it = occurance.iterator();
-        boolean matched = false;
-        while(it.hasNext() && !matched) {
+    private void removeTillRepeatingChar(Set<Character> occurrence,char charToFind) {
+        Iterator<Character> it = occurrence.iterator();
+        while(it.hasNext()) {
             char ch = it.next();
             it.remove();
             if(ch == charToFind) {
-                matched = true;
+                break;
             }
         }
     }

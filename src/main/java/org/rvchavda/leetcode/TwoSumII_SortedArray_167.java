@@ -38,12 +38,23 @@ package org.rvchavda.leetcode;
  * The tests are generated such that there is exactly one solution.
  */
 public class TwoSumII_SortedArray_167 {
-  public void method() {
-
+  public int[] twoSum(int[] numbers, int target) {
+    int l = 0, r = numbers.length -1;
+    while (l < r) {
+      int sum = numbers[l] + numbers[r];
+      if(sum < target) {
+        l++;
+      } else if(sum > target) {
+        r--;
+      } else {
+        return new int[]{l+1, r+1};
+      }
+    }
+    return new int[0];
   }
 
   public static void main(String[] args) {
     TwoSumII_SortedArray_167 cls = new TwoSumII_SortedArray_167();
-    //cls.method();
+    cls.twoSum(new int[]{1,2,3,4}, 7);
   }
 }

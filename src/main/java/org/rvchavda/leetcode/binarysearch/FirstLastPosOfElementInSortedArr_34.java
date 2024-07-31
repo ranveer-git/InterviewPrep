@@ -1,4 +1,4 @@
-package org.rvchavda.leetcode;
+package org.rvchavda.leetcode.binarysearch;
 
 import java.util.Arrays;
 

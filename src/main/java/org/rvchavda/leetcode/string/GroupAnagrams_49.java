@@ -39,7 +39,7 @@ public class GroupAnagrams_49 {
         for(String str : strs) {
             char[] strArr = str.toCharArray();
 //            Arrays.sort(strArr);
-            String sortedKey = sortLowerCaseCharArr(strArr);;
+            String sortedKey = sortLowerCaseCharArr(strArr);
 //            String sortedKey = getSortedString(str);;
 //            String sortedKey = getSortedStringHeap(str);;
             valueStore.putIfAbsent(sortedKey, new ArrayList());
